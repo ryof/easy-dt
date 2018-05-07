@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  express:
+    build: express
+    ports:
+      - 33000:33000
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - 33306:3306
+
+  s3proxy:
+    image: andrewgaul/s3proxy:s3proxy-1.6.0
+    volumes:
+      - ./s3proxy/images:/data/images
+    environment:
+      S3PROXY_AUTHORIZATION: 'none'
+    ports:
+      - 34000:80

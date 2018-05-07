@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>MASCOTS</title>
+  </head>
+  <body>
+    <h1>MASCOTS</h1>
+    <% results.forEach(function (value, key) { %>
+      <h2><%= value.name %></h2>
+      <img src="http://localhost:34000/images/<%= value.file_name %>" />
+    <% }); %>
+  </body>
+</html>
