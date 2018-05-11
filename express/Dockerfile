@@ -9,4 +9,6 @@ COPY yarn.lock yarn.lock
 
 RUN yarn install
 
+EXPOSE 33000
+
 CMD ["node", "index.js"]
